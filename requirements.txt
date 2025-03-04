@@ -1,0 +1,13 @@
+pandas
+numpy
+scikit-learn
+optuna
+mlflow
+fastapi
+uvicorn
+python-multipart
+pyyaml
+loguru
+pytest
+httpx
+pytest-cov
