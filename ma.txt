@@ -1,0 +1,48 @@
+Go to: https://mermaid.live/
+Copy and paste this code:
+
+graph TD
+    subgraph Data Flow
+        A[CSV Input] --> B[DataLoader]
+        B --> C[Data Validation]
+        C --> D[Feature Preparation]
+    end
+
+    subgraph Model Training
+        D --> E[StockAnomalyDetector]
+        E --> F[Optuna Hyperparameter Optimization]
+        F --> G[Isolation Forest Training]
+        G --> H[Model Evaluation]
+    end
+
+    subgraph MLflow Management
+        H --> I[MLflow Model Tracking]
+        I --> J[Model Storage]
+        J --> K[Model Registry]
+    end
+
+    subgraph Inference
+        L[New Data] --> M[Load Latest Model]
+        M --> N[Anomaly Detection]
+        N --> O[Results]
+    end
+
+    subgraph API Layer
+        P[FastAPI Endpoints] --> |/detect_anomalies/|Q[Detect Anomalies Flow]
+        P --> |/force_retrain/|R[Force Retrain Flow]
+        Q --> S[Response JSON]
+        R --> S
+    end
+
+    subgraph UI Layer
+        T[Streamlit Interface] --> U[File Upload]
+        U --> V[Process Control]
+        V --> W[Visualization]
+        W --> X[Download Results]
+    end
+
+    %% Connections between subgraphs
+    D --> L
+    K --> M
+    O --> S
+    S --> T
